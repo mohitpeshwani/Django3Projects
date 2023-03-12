@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <title>The Materialize NavBar Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    </script>
+    {% include "employee/employee_navbar.html"%}
+    <h1 class="text-center my-3">Employee Management</h1>
+   <p style="text-align:center"> list of employee</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#SNO.</th>
+                    <th>NAME</th>
+                    <th>EMP ID</th>
+                    <th>PHONE</th>
+                    <th>WORKING</th>
+                    <th>DEPARTMENT</th>
+                    <th>City</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for e in emps %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{e.employee_name}}</td>
+                    <td>{{e.employee_id}}</td>
+                    <td>{{e.phone}}</td>
+                    <td>{{e.working}}</td>
+                    <td>{{e.department}}</td>
+                    <td>{{e.city}}</td>
+                    <td>
+                        <a href="/employee/delete/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="/employee/update/{{e.id}}" class="btn btn-dark btn-sm">Update</a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+</body>
+</html>
