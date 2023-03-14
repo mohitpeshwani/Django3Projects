@@ -140,7 +140,7 @@
       <h1>Update Employee Details</h1>
       <form action="/employee/do-update-emp/{{x.id}}" method ="POST">
         {% csrf_token %}
-        <div class="info">
+        <div class="info"> 
           <div class="info-item">
             <label class="icon" for="name"><i class="fas fa-user"></i></label>
             <input type="text" name="emp_name" id="name" placeholder="Name" value="{{x.employee_name}}" required/>
