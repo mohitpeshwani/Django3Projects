@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-
-from employee.models import Employee
+from employee.feedback import FeedbackForm
+from employee.models import Employee,Testimonial,Feedback
 
 
 # Create your views here.
@@ -71,24 +71,22 @@ def do_update_emp(request,emp_id):
         e.save()
     return redirect("/employee/home/")
 
-# def testimonials(request):
-#     testi=Testimonial.objects.all()
+def testimonials(request):
+    e=Testimonial.objects.all()
 
-#     return render(request, "emp/testimonials.html",{
-#         'testi':testi
-#     })
+    return render(request, "employee/testimonials.html",{
+        'e':e
+    })
 
 
-# def feedback(request):
-#     if request.method=='POST':
-#         form=FeedbackForm(request.POST)
-#         if form.is_valid():
-#             print(form.cleaned_data['email'])
-#             print(form.cleaned_data['name'])
-#             print(form.cleaned_data['feedback'])
-#             print("data saved")
-#         else:
-#             return render(request, "emp/feedback.html",{'form':form})
-#     else:
-#         form=FeedbackForm()
-#         return render(request, "emp/feedback.html",{'form':form})
+def feedback(request):
+    if request.method=='POST':
+        form=FeedbackForm(request.POST)
+        if form.is_valid():
+            v= form.save()
+        else:
+            return render(request, "employee/feedback.html",{'form':form})
+    else:
+        form=FeedbackForm()
+        return render(request, "employee/feedback.html",{'form':form})
+    return HttpResponse ("Saved successfully")

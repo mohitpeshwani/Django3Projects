@@ -7,10 +7,23 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
     </script>
-<body>
-    <center>
-        {% include "navbar.html"%}
-<h1>Services</h1>
-<center>
+    {% include "employee/employee_navbar.html"%}
+    <center><h1 class="text-center my-3">Feedback  </h1></center>
+
+    <form action="/employee/feedback/" method="POST">
+
+        {% csrf_token %}
+        {{form.as_p}}
+
+
+        <div class="container text-center">
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        </div>
+
+    </form>
+    
+
 </body>
 </html>

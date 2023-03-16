@@ -7,10 +7,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
     </script>
-
     {% include "employee/employee_navbar.html"%}
-    <center><h1 class="text-center my-3">Employee Management</h1></center>
-   <h3><center> list of employee</center></h3></p>
+    <center><h1>Testimonial</h1></center>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -21,28 +19,19 @@
                   <tr>
                     <th>#SNO.</th>
                     <th>NAME</th>
-                    <th>EMP ID</th>
-                    <th>PHONE</th>
-                    <th>WORKING</th>
-                    <th>DEPARTMENT</th>
-                    <th>City</th>
-                    <th>ACTION</th>
+                    <th>RATING</th>
+                    <th>Photo</th>
+                    <th>Experience</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {% for e in emps %}
+                  {% for i in e %}
                   <tr>
                     <td>{{forloop.counter}}</td>
-                    <td>{{e.employee_name}}</td>
-                    <td>{{e.employee_id}}</td>
-                    <td>{{e.phone}}</td>
-                    <td>{{e.working}}</td>
-                    <td>{{e.department}}</td>
-                    <td>{{e.city}}</td>
-                    <td>
-                        <a href="/employee/delete/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
-                        <a href="/employee/update/{{e.id}}" class="btn btn-dark btn-sm">Update</a>
-                      </td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.rating}}</td>
+                    <td><img src="/{{i.image}}" width="100px" width="100px"></td>
+                    <td>{{i.testimonial}}</td>
                   </tr>
                   {% endfor %}
                 </tbody>

@@ -8,4 +8,17 @@ class Employee(models.Model):
     city = models.CharField(max_length=150)
     working = models.BooleanField(default=True)
     department = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.employee_name + " "+ self.employee_id
     
+class Testimonial(models.Model):
+    name = models.CharField(max_length=50,null=True)
+    testimonial = models.TextField(null=True)
+    image = models.ImageField(upload_to="testimonial/", height_field=None, width_field=None, max_length=None,null=True)
+    rating = models.IntegerField(null=True)
+
+class Feedback(models.Model):
+    name = models.CharField(max_length=100)
+    email =models.CharField(max_length=100)
+    feedback = models.TextField()
